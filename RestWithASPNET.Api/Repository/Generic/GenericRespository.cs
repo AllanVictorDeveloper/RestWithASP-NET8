@@ -6,7 +6,7 @@ namespace RestWithASPNET.Api.Repository.Generic
 {
     public class GenericRespository<T> : IRepository<T> where T : BaseEntity
     {
-        private readonly Context _context;
+        protected readonly Context _context;
 
         private DbSet<T> dataset;
 

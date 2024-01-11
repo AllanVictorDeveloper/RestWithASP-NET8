@@ -3,11 +3,11 @@ using RestWithASPNET.Api.Repository;
 
 namespace RestWithASPNET.Api.Business.Implementations
 {
-    public class PersonBusinessImplementation : IPersonBusiness
+    public class PersonBusiness : IPersonBusiness
     {
         private readonly IRepository<Person> _repository;
 
-        public PersonBusinessImplementation(IRepository<Person> repository)
+        public PersonBusiness(IRepository<Person> repository)
         {
             _repository = repository;
         }
