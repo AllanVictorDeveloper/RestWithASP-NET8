@@ -60,9 +60,9 @@ namespace RestWithASPNET.Api.Business.Implementations
             var size = (page < 1) ? 10 : pageSize;
             var offset = page > 0 ? (page - 1) * size : 0;
 
-            string query = @"SELECT * FROM rest_with_asp_net.dbo.persons as p WHERE 1 = 1 ";
+            string query = @"SELECT * FROM rest_with_asp_net.dbo.persons as p";
 
-            if (!string.IsNullOrWhiteSpace(name)) query = query + $" AND p.FirstName LIKE '%{name}%'";
+            if (!string.IsNullOrWhiteSpace(name)) query = query + $" WHERE p.FirstName LIKE '%{name}%'";
 
             query += $" ORDER BY p.FirstName {sort} OFFSET {offset} ROWS FETCH NEXT {size} ROWS ONLY";
 
