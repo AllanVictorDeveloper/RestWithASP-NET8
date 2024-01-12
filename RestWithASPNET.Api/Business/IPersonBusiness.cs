@@ -1,4 +1,5 @@
-﻿using RestWithASPNET.Api.Model;
+﻿using RestWithASPNET.Api.Dto.Request;
+using RestWithASPNET.Api.Model;
 
 namespace RestWithASPNET.Api.Business
 {
@@ -10,8 +11,14 @@ namespace RestWithASPNET.Api.Business
 
         List<Person> FindAll();
 
+        PageSearchRequest<Person> FindWithPagedSearch(string? name, string sortDirection, int pageSize, int page);
+
         Person FindById(int id);
 
+        List<Person> FindByName(string firstName, string lastName);
+
         void Delete(int id);
+
+        Person Disable(int id);
     }
 }

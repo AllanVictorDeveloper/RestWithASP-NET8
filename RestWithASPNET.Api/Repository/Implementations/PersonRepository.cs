@@ -29,9 +29,37 @@ namespace RestWithASPNET.Api.Repository.Implementations
                 {
                     throw new Exception(ex.Message);
                 }
-
             }
-                return user;
+            return user;
+        }
+
+        public List<Person> FindByName(string firstName, string lastName)
+        {
+            try
+            {
+                if (!string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+                {
+                    return _context.Persons.Where(
+                    p => p.FirstName.Contains(firstName)
+                    && p.LastName.Contains(lastName)).ToList();
+                }
+                else if (string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName))
+                {
+                    return _context.Persons.Where(
+                    p => p.LastName.Contains(lastName)).ToList();
+                }
+                else if (!string.IsNullOrWhiteSpace(firstName) && string.IsNullOrWhiteSpace(lastName))
+                {
+                    return _context.Persons.Where(
+                    p => p.FirstName.Contains(firstName)).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+
+            return null;
         }
     }
 }

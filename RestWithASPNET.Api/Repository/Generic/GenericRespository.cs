@@ -85,5 +85,30 @@ namespace RestWithASPNET.Api.Repository.Generic
         {
             return dataset.Any(p => p.Id == id);
         }
+
+        public List<T> FindWithPagedSearch(string query)
+        {
+            var persons = dataset.FromSqlRaw<T>(query).ToList();
+
+            return persons;
+        }
+
+        public int GetCount(string query)
+        {
+            var result = "";
+
+            using (var connection = _context.Database.GetDbConnection())
+            {
+                connection.Open();
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = query;
+
+                    result = command.ExecuteScalar().ToString();
+                }
+            }
+
+            return int.Parse(result);
+        }
     }
 }
