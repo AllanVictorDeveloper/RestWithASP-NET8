@@ -39,9 +39,11 @@ namespace RestWithASPNET.Api.Business.Implementations
                 )
             {
                 var docName = Path.GetFileName(file.FileName);
+
                 if (file is not null && file.Length > 0)
                 {
                     var destination = Path.Combine(_basePath, "", docName);
+
                     fileDetails.DocumentName = docName;
                     fileDetails.DocType = fileType;
                     fileDetails.DocUrl = Path.Combine(baseUrl + "/api/file/v1/" + fileDetails.DocumentName);

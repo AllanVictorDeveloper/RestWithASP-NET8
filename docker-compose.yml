@@ -1,0 +1,33 @@
+version: '3.4'
+networks:
+  restwithaspnet.network:
+
+services:
+  restwithaspnet.db:
+    container_name: api.db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - 1433:1433 
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Dev@llan73
+    networks:
+      - restwithaspnet.network
+  restwithaspnet.api:
+    container_name: restwithaspnet.api
+    image: ${DOCKER_REGISTRY-}restwithaspnetapi
+    build:
+      context: .
+      dockerfile: RestWithASPNET.Api/Dockerfile
+    ports:
+      - 44300:8080
+    depends_on:
+      - restwithaspnet.db
+    environment:
+      - DB_HOST=restwithaspnet.db
+      - DB_NAME=rest_asp_net_db
+      - DB_SA_PASSWORD=Dev@llan73
+      - TZ=America/Sao_Paulo
+      - ASPNETCORE_ENVIRONMENT=Development
+    networks:
+      - restwithaspnet.network

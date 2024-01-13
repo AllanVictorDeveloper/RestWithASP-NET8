@@ -60,13 +60,14 @@ namespace RestWithASPNET.Api.Business.Implementations
             var size = (page < 1) ? 10 : pageSize;
             var offset = page > 0 ? (page - 1) * size : 0;
 
-            string query = @"SELECT * FROM rest_with_asp_net.dbo.persons as p";
+            string query = @"SELECT * FROM rest_asp_net_db.dbo.persons as p";
+
 
             if (!string.IsNullOrWhiteSpace(name)) query = query + $" WHERE p.FirstName LIKE '%{name}%'";
 
             query += $" ORDER BY p.FirstName {sort} OFFSET {offset} ROWS FETCH NEXT {size} ROWS ONLY";
 
-            string countQuery = @"SELECT count(*) FROM rest_with_asp_net.dbo.persons as p WHERE 1 = 1";
+            string countQuery = @"SELECT count(*) FROM rest_asp_net_db.dbo.persons as p WHERE 1 = 1";
 
             if (!string.IsNullOrWhiteSpace(name)) countQuery = countQuery + $" AND p.FirstName LIKE '%{name}%'";
 
