@@ -4,8 +4,8 @@ networks:
 
 services:
   restwithaspnet.db:
-    container_name: api.db
-    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: restwithaspnet.db
+    image: restwithaspnet.db
     ports:
       - 1433:1433 
     environment:
@@ -15,7 +15,7 @@ services:
       - restwithaspnet.network
   restwithaspnet.api:
     container_name: restwithaspnet.api
-    image: ${DOCKER_REGISTRY-}restwithaspnetapi
+    image: ${DOCKER_REGISTRY-}restwithaspnet.api
     build:
       context: .
       dockerfile: RestWithASPNET.Api/Dockerfile
