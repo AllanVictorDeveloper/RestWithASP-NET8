@@ -33,7 +33,7 @@ jobs:
      
       - name: Push to Azure Container registry
         run: |
-          docker tag ${{ secrets.IMAGE_NAME }:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{github.run_id}}
+          docker tag ${{ secrets.IMAGE_NAME }}:latest ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{github.run_id}}
           docker push ${{ secrets.DOCKER_CONTAINER_REGISTRY }}/${{ secrets.IMAGE_NAME }}:${{github.run_id}}
      
       - name: Login in Azure to Deployment
