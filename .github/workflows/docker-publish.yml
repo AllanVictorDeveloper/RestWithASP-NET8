@@ -37,3 +37,10 @@ jobs:
         with:
           app-name: erudio-api-rest2
           images:  restwithaspnet.azurecr.io/restwithaspnet.api:${{github.run_id}}
+
+      - name: Debug Variáveis
+        run: |
+            echo "AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}"
+            # echo "IMAGE_NAME: ${{ secrets.IMAGE_NAME }}"
+            # echo "RUN_ID: ${{ github.run_id }}"
+
