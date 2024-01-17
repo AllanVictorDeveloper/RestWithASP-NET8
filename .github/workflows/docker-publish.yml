@@ -41,7 +41,7 @@ jobs:
       - name: Azure WebApp Container - Application Deployment
         uses: azure/webapps-deploy@v2
         with:
-          app-name: erudio-api-rest2
+          app-name: restwithaspnet-api
           images:  restwithaspnet.azurecr.io/restwithaspnet.api:${{github.run_id}}
 
       
