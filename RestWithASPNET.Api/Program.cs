@@ -90,7 +90,7 @@ builder.Services.AddSwaggerGen(c =>
         Title = "REST API's from 0 to Azure with ASP.NET Core 8 and Docker.",
         Version = "v1",
 
-        Description = "API RESTful developed in course REST API's from 0 to Azure with ASP.NET Core 8 and Docker - Teste deploy.",
+        Description = "API RESTful developed in course REST API's from 0 to Azure with ASP.NET Core 8 and Docker - Teste deploy-teste.",
 
         Contact = new OpenApiContact
         {
