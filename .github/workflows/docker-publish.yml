@@ -17,16 +17,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           login-server: ${{ secrets.DOCKER_CONTAINER_REGISTRY }}
-
-      - name: Debug Variáveis
-        run: |
-            echo "AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}"
-            echo "IMAGE_NAME: ${{ secrets.IMAGE_NAME }}"
-            echo "DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}"
-            echo "DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}"
-            echo "APP_SERVICE_NAME: ${{ secrets.APP_SERVICE_NAME }}"
-            echo "RUN_ID: ${{ github.run_id }}"
-            
+          
       - name: Build Images
         working-directory: ./
         run: docker-compose build
