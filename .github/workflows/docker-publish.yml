@@ -17,7 +17,13 @@ jobs:
           username: restwithaspnet
           password: 3/JPEHCDmx8xGF8AnOJYqiVUHSOG2nx9k4teWl5iOt+ACRCcjFJa
           login-server: restwithaspnet.azurecr.io
-   
+
+      - name: Debug Variáveis
+        run: |
+            echo "AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}"
+            # echo "IMAGE_NAME: ${{ secrets.IMAGE_NAME }}"
+            # echo "RUN_ID: ${{ github.run_id }}"
+            
       - name: Build Images
         working-directory: ./
         run: docker-compose build
@@ -38,9 +44,5 @@ jobs:
           app-name: erudio-api-rest2
           images:  restwithaspnet.azurecr.io/restwithaspnet.api:${{github.run_id}}
 
-      - name: Debug Variáveis
-        run: |
-            echo "AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}"
-            # echo "IMAGE_NAME: ${{ secrets.IMAGE_NAME }}"
-            # echo "RUN_ID: ${{ github.run_id }}"
+      
 
