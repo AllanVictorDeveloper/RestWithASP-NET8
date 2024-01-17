@@ -87,7 +87,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo
     {
-        Title = "REST API's from 0 to Azure with ASP.NET Core 8 and Docker - Teste deploy v1.0.0.",
+        Title = "REST API's from 0 to Azure with ASP.NET Core 8 and Docker - Teste deploy v2.0.0.",
         Version = "v1",
 
         Description = "API RESTful developed in course REST API's from 0 to Azure with ASP.NET Core 8 and Docker",
