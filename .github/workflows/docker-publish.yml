@@ -22,7 +22,7 @@ jobs:
         run: |
             echo "AZURE_CREDENTIALS: ${{ secrets.AZURE_CREDENTIALS }}"
             # echo "IMAGE_NAME: ${{ secrets.IMAGE_NAME }}"
-            # echo "RUN_ID: ${{ github.run_id }}"
+            echo "RUN_ID: ${{ github.run_id }}"
             
       - name: Build Images
         working-directory: ./
