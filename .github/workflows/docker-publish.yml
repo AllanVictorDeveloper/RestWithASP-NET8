@@ -19,7 +19,7 @@ jobs:
           login-server: restwithaspnet.azurecr.io
    
       - name: Build Images
-        working-directory: ./RestWithASP-NET8/RestWithASP-NET8
+        working-directory: ./
         run: docker-compose build
      
       - name: Push to Azure Container registry
