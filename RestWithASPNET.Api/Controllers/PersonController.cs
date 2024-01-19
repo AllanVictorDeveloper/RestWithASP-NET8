@@ -28,7 +28,9 @@ namespace RestWithASPNET.Api.Controllers
         [ProducesResponseType((401))]
         public IActionResult Get([FromQuery] string? name, string sortDirection, int pageSize, int page)
         {
-            return Ok(_personBusiness.FindWithPagedSearch(name, sortDirection, pageSize, page));
+
+            var persons = _personBusiness.FindWithPagedSearch(name, sortDirection, pageSize, page);
+            return Ok(persons);
         }
 
         [HttpGet("{id}")]
