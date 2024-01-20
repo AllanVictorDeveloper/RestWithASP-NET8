@@ -26,14 +26,14 @@ jobs:
           dotnet-version: '8.x'
           include-prerelease: true
 
-      - name: Change to project directory
-        run: cd $GITHUB_WORKSPACE/RestWithASPNET.Api
+      - name: Find project file
+        run: PROJECT_FILE=$(find $GITHUB_WORKSPACE -name '*.csproj' -type f -print -quit)
 
       - name: Build with dotnet
-        run: dotnet build --configuration Release
+        run: dotnet build --configuration Release --project $PROJECT_FILE
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp --project $PROJECT_FILE
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
