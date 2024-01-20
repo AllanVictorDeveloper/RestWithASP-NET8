@@ -26,11 +26,14 @@ jobs:
           dotnet-version: '8.x'
           include-prerelease: true
 
+      - name: Change to project directory
+        run: cd RestWithASPNET.Api
+
       - name: Build with dotnet
-        run: dotnet build --configuration Release --project RestWithASPNET.Api/RestWithASPNET.Api.csproj
+        run: dotnet build --configuration Release
 
       - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp --project RestWithASPNET.Api/RestWithASPNET.Api.csproj
+        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
